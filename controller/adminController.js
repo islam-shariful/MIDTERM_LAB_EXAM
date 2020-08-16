@@ -67,19 +67,29 @@ router.post(
 
 //ALl EMployee Get.................................................
 router.get("/AllEmployee", function (req, res) {
-  // adminModel.getAll(function (results) {
-  //   if (results) {
-  //     res.render("admin/AllEmployee", { employeeList: results });
-  //   } else {
-  //     res.redirect("/admin");
-  //   }
-  // });
-
   adminModel.getAll((result) => {
     console.log(result);
     //res.render("AllEmployee");
     if (result) {
       res.render("AllEmployee", { employeeList: result });
+    } else {
+      res.redirect("/admin");
+    }
+  });
+});
+//Delete Employee Get.................................................
+router.get("/deleteEmployee/:username", function (req, res) {
+  res.render("deleteEmployee", { username: req.params.username });
+  console.log(req.params.username);
+  // adminModel.get(req.params.username, function(result){
+  // res.render('admin/deleteEmployee', {user: result});
+  // console.log(result);
+});
+//Delete Employee post.................................................
+router.post("/deleteEmployee/:username", function (req, res) {
+  adminModel.delete(req.body.username, function (status) {
+    if (status) {
+      res.redirect("/admin/AllEmployee");
     } else {
       res.redirect("/admin");
     }

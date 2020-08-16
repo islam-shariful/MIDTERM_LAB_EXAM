@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin | Delete Employee</title>
+  </head>
+  <body>
+    <h1>Delete Employee</h1>
+    <form method="post">
+      <table border="1">
+        <tr>
+          <th>USERNAME</th>
+        </tr>
+        <tr>
+          <td><%= username %></td>
+        </tr>
+      </table>
+      <h3>Are you sure? This can't be undone!</h3>
+      <input type="hidden" name="username" value="<%= username %>" />
+      <input type="submit" name="submit" value="confirm" />
+    </form>
+  </body>
+</html>
