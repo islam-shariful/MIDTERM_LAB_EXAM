@@ -68,7 +68,7 @@ router.post(
 //ALl EMployee Get.................................................
 router.get("/AllEmployee", function (req, res) {
   adminModel.getAll((result) => {
-    console.log(result);
+    //console.log(result);
     //res.render("AllEmployee");
     if (result) {
       res.render("AllEmployee", { employeeList: result });
@@ -80,14 +80,36 @@ router.get("/AllEmployee", function (req, res) {
 //Delete Employee Get.................................................
 router.get("/deleteEmployee/:username", function (req, res) {
   res.render("deleteEmployee", { username: req.params.username });
-  console.log(req.params.username);
+  //console.log(req.params.username);
   // adminModel.get(req.params.username, function(result){
   // res.render('admin/deleteEmployee', {user: result});
   // console.log(result);
 });
-//Delete Employee post.................................................
+//Delete Employee post
 router.post("/deleteEmployee/:username", function (req, res) {
   adminModel.delete(req.body.username, function (status) {
+    if (status) {
+      res.redirect("/admin/AllEmployee");
+    } else {
+      res.redirect("/admin");
+    }
+  });
+});
+
+//Update Employee "Get".................................................
+router.get("/updateEmployee/:username", function (req, res) {
+  res.render("updateEmployee", { username: req.params.username });
+});
+//Update Employee "Post"
+router.post("/updateEmployee/:username", function (req, res) {
+  var employeeList = {
+    name: req.body.name,
+    contact: req.body.contact,
+    username: req.params.username,
+    password: req.body.password,
+  };
+  console.log("from admin control", employeeList);
+  adminModel.update({ user: employeeList }, function (status) {
     if (status) {
       res.redirect("/admin/AllEmployee");
     } else {

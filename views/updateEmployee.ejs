@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin | Update Employee</title>
+  </head>
+  <body>
+    <h1>Update Employee</h1>
+    <div>
+      <h3>Give Updated Value</h3>
+    </div>
+    <br />
+    <form method="post">
+      <table>
+        <input type="text" name="name" placeholder="Give Name" required />
+        <input type="text" name="contact" placeholder="Give contact" required />
+        <input
+          type="text"
+          name="password"
+          placeholder="Give password"
+          required
+        />
+      </table>
+      <br />
+      <table border="1">
+        <tr>
+          <th>USERNAME</th>
+        </tr>
+        <tr>
+          <td><%= username %></td>
+        </tr>
+      </table>
+      <h3>Are you sure? This can't be undone!</h3>
+      <input type="hidden" name="username" value="<%= username %>" />
+      <input type="submit" name="submit" value="Update" />
+    </form>
+  </body>
+</html>

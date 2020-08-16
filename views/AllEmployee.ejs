@@ -23,7 +23,10 @@
         <td><%= employeeList[i].username %></td>
         <td><%= employeeList[i].password %></td>
         <td>
-          <a href="/admin/Update/<%= employeeList[i].username %>">UPDATE</a> |
+          <a href="/admin/updateEmployee/<%= employeeList[i].username %>"
+            >UPDATE</a
+          >
+          |
           <a href="/admin/deleteEmployee/<%= employeeList[i].username %>">
             DELETE
           </a>

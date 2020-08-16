@@ -65,18 +65,20 @@ module.exports = {
   },
 
   update: function (user, callback) {
+    console.log("From adminModel..........", user);
     var sql =
-      "update admin set username=?, password=?, phone=?, gender=?, designation=? where empid=?";
+      "update 'employee' set 'name'=" +
+      user.name +
+      ", 'contact'=" +
+      user.contact +
+      ", 'password'=" +
+      user.password +
+      " where 'username'=" +
+      user.username +
+      "";
     db.execute(
-      sql,
-      [
-        user.username,
-        user.password,
-        user.phone,
-        user.gender,
-        user.designation,
-        user.id,
-      ],
+      sql /*
+      [user.name, user.contact, user.password, user.username],*/,
       function (status) {
         if (status) {
           callback(true);
